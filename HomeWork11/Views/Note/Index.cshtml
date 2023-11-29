@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NoteModel>
+@{
+    ViewData["Title"] = "Note list";
+}
+
+<div class="container shadow p-5">
+    <h1>Note CRUD Demo</h1>
+
+    <div class="col mb-3">
+        <a asp-controller="Note" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Note</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="5%">Id</th> 
+                <th scope="col" width="20%">Name of the note</th>
+                <th scope="col" width="40%">Text</th>
+                <th scope="col" width="25%">Tags</th>
+                <th scope="col" width="20%">Created At</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model)
+            {
+                <tr>
+                    <td>@note.Id</td>
+                    <td>@note.NameNote</td>
+                    <td>@note.TextNote</td>
+                    <td>@note.Tags</td>
+                    <td>@note.CreatedAt</td>
+                    <td>
+                        <div role="group" class="w-60 btn-group">
+                            <span style="margin-right: 5px;">
+                                <a asp-controller="Note" asp-action="Edit" asp-route-id="@note.Id" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                            </span>
+                            <span>
+                                <a asp-controller="Note" asp-action="Delete" asp-route-id="@note.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

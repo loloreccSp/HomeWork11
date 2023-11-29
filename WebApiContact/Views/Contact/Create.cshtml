@@ -1,0 +1,54 @@
+﻿@model ContactModel
+
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>New Contact</h2>
+    </div>
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name">Contact name</label>
+                <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter name" required>
+                <span asp-validation-for="Name" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Phone">Phone</label>
+                <input type="text" class="form-control mb-3" asp-for="Phone" placeholder="Enter phone" required>
+                <span asp-validation-for="Phone" class="alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="SecondPhone">Second phone<p ></p></label>
+                <input type="text" class="form-control mb-3" asp-for="SecondPhone" placeholder="Enter phone">
+
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Email">Email</label>
+                <input type="text" class="form-control mb-3" asp-for="Email" placeholder="Enter email" required>
+                <span asp-validation-for="Email" class="alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Information">Information</label>
+                <input type="text" class="form-control mb-3" asp-for="Information" placeholder="Enter information about yourself" required>
+                <span asp-validation-for="Information" class="alert-danger"></span>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Create</button>
+        <a asp-controller="Contact" asp-action="Index" class="btn btn-lg btn-warning p-2">Back</a>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ContactModel>
+
+@{
+    ViewData["Title"] = "Contact list";
+}
+
+<div class="container shadow p-5">
+    <h1>Contact CRUD Demo</h1>
+
+    <div class="col mb-3">
+        <a asp-controller="Contact" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>New Contact</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="5%">Id</th> 
+                <th scope="col" width="10%">Name Contact</th>
+                <th scope="col" width="10%">Phone</th>
+                <th scope="col" width="10%">Second Phone</th>
+                <th scope="col" width="20%">Email</th>
+                <th scope="col" width="30%">Information</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.Id</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.Phone</td>
+                    <td>@contact.SecondPhone</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Information</td>
+                    <td>
+                        <div role="group" class="w-60 btn-group">
+                            <span style="margin-right: 5px;">
+                                <a asp-controller="Contact" asp-action="Edit" asp-route-id="@contact.Id" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                            </span>
+                            <span>
+                                <a asp-controller="Contact" asp-action="Delete" asp-route-id="@contact.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
